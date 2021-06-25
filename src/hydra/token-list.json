@@ -1,0 +1,38 @@
+{
+  "name": "Hydraswap Default List",
+  "timestamp": "2021-06-25T23:57:10.982Z",
+  "version": {
+    "major": 2,
+    "minor": 0,
+    "patch": 0
+  },
+  "tags": {},
+  "logoURI": "ipfs://QmNa8mQkrNKp1WEEeGjFezDmDeodkWRevGFN8JCV7b4Xir",
+  "keywords": ["uniswap", "default"],
+  "tokens": [
+    {
+      "chainId": 1,
+      "address": "84c83f8ad670c57796ce252263ebcd70dc719247",
+      "name": "TokenA",
+      "symbol": "TA",
+      "decimals": 8,
+      "logoURI": "https://assets.coingecko.com/coins/images/12645/thumb/AAVE.png?1601374110"
+    },
+    {
+      "chainId": 1,
+      "address": "54529f2f53d645ddf2116abd07ac1a9eb841ff31",
+      "name": "TokenB",
+      "symbol": "TB",
+      "decimals": 8,
+      "logoURI": "https://assets.coingecko.com/coins/images/12409/thumb/amp-200x200.png?1599625397"
+    },
+    {
+      "name": "Wrapped Hydra",
+      "address": "6d9115a21863ce31b44cd231e4c4ccc87566222f",
+      "symbol": "WHYDRA",
+      "decimals": 8,
+      "chainId": 1,
+      "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x960b236A07cf122663c4303350609A66A7B288C0/logo.png"
+    }
+  ]
+}
