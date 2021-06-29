@@ -2,7 +2,7 @@ import { darken, lighten } from 'polished'
 import React, { useMemo } from 'react'
 import { Activity } from 'react-feather'
 import { useTranslation } from 'react-i18next'
-import { useHydraState } from 'state/hydra/hooks'
+import { useHydraState } from 'state/hydra/wallet/hooks'
 import styled, { css } from 'styled-components'
 
 import { useConnectHydraWallet } from 'hydra/hooks'

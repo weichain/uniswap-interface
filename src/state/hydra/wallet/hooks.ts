@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { AppState } from '../index'
+import { AppState } from '../../index'
 import { Hydraweb3 } from 'hydraweb3-js'
 
 export function useHydraState(): AppState['hydra'] {
@@ -9,7 +9,7 @@ export function useHydraState(): AppState['hydra'] {
 
 export function useHydraProvider(): { provider: any } {
   const { address } = useHydraState()
-  const [provider, setProvider] = useState({})
+  const [provider, setProvider] = useState(null)
 
   useEffect(() => {
     if (address) {

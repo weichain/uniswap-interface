@@ -10,7 +10,8 @@ import mint from './mint/reducer'
 import lists from './lists/reducer'
 import burn from './burn/reducer'
 import multicall from './multicall/reducer'
-import hydra from './hydra/reducer'
+import hydra from './hydra/wallet/reducer'
+import hydrabalances from './hydra/balances/reducer'
 
 const PERSISTED_KEYS: string[] = ['user', 'transactions', 'lists']
 
@@ -24,9 +25,10 @@ const store = configureStore({
     burn,
     multicall,
     lists,
-    hydra
+    hydra,
+    hydrabalances
   },
-  middleware: [...getDefaultMiddleware({ thunk: false }), save({ states: PERSISTED_KEYS })],
+  middleware: [...getDefaultMiddleware({ thunk: false, serializableCheck: false }), save({ states: PERSISTED_KEYS })],
   preloadedState: load({ states: PERSISTED_KEYS })
 })
 

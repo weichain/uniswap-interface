@@ -17,7 +17,7 @@ import Menu from '../Menu'
 
 import Row, { RowFixed } from '../Row'
 import Web3Status from '../Web3Status'
-import { useHydraState } from 'state/hydra/hooks'
+import { useHydraState } from 'state/hydra/wallet/hooks'
 
 const HeaderFrame = styled.div`
   display: grid;

@@ -1,7 +1,8 @@
-import { ChainId, Currency, CurrencyAmount, ETHER, Token, TokenAmount, WETH } from '@uniswap/sdk'
+import { ChainId, TokenAmount } from '@uniswap/sdk'
+import { HYDRA, WHYDRA, Token, Currency, CurrencyAmount } from 'hydra/sdk'
 
 export function wrappedCurrency(currency: Currency | undefined, chainId: ChainId | undefined): Token | undefined {
-  return chainId && currency === ETHER ? WETH[chainId] : currency instanceof Token ? currency : undefined
+  return chainId && currency === HYDRA ? WHYDRA[chainId] : currency instanceof Token ? currency : undefined
 }
 
 export function wrappedCurrencyAmount(
@@ -13,6 +14,6 @@ export function wrappedCurrencyAmount(
 }
 
 export function unwrappedToken(token: Token): Currency {
-  if (token.equals(WETH[token.chainId])) return ETHER
+  if (token.equals(WHYDRA[token.chainId])) return HYDRA
   return token
 }

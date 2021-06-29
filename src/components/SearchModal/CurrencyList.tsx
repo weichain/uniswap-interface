@@ -1,11 +1,9 @@
-import { CurrencyAmount, currencyEquals, Token } from '@uniswap/sdk'
 import React, { CSSProperties, MutableRefObject, useCallback, useMemo } from 'react'
 import { FixedSizeList } from 'react-window'
 import { Text } from 'rebass'
 import styled from 'styled-components'
 import { useActiveWeb3React } from '../../hooks'
 import { WrappedTokenInfo, useCombinedActiveList } from '../../state/lists/hooks'
-import { useCurrencyBalance } from '../../state/wallet/hooks'
 import { TYPE } from '../../theme'
 import { useIsUserAddedToken, useAllInactiveTokens } from '../../hooks/Tokens'
 import Column from '../Column'
@@ -18,7 +16,9 @@ import { isTokenOnList } from '../../utils'
 import ImportRow from './ImportRow'
 import { wrappedCurrency } from 'utils/wrappedCurrency'
 
-import { Currency, HYDRA } from 'hydra/sdk'
+import { Currency, CurrencyAmount, currencyEquals, HYDRA, Token } from 'hydra/sdk'
+import { useTokenBalances } from 'state/hydra/balances/hooks'
+import { useHydraState } from 'state/hydra/wallet/hooks'
 
 function currencyKey(currency: Currency): string {
   return currency instanceof Token ? currency.address : currency === HYDRA ? 'HYDRA' : ''
@@ -46,7 +46,7 @@ const Tag = styled.div`
 `
 
 function Balance({ balance }: { balance: CurrencyAmount }) {
-  return <StyledBalanceText title={balance.toExact()}>{balance.toSignificant(4)}</StyledBalanceText>
+  return <StyledBalanceText title={balance.toExact()}>{balance.toSignificant(6)}</StyledBalanceText>
 }
 
 const TagContainer = styled.div`
@@ -96,12 +96,12 @@ function CurrencyRow({
   otherSelected: boolean
   style: CSSProperties
 }) {
-  const { account } = useActiveWeb3React()
+  const { address } = useHydraState()
   const key = currencyKey(currency)
   const selectedTokenList = useCombinedActiveList()
   const isOnSelectedList = isTokenOnList(selectedTokenList, currency)
   const customAdded = useIsUserAddedToken(currency)
-  const balance = useCurrencyBalance(account ?? undefined, currency)
+  const balance = useTokenBalances(currency as Token)
 
   // only show add or remove buttons if not on selected list
   return (
@@ -123,7 +123,7 @@ function CurrencyRow({
       </Column>
       <TokenTags currency={currency} />
       <RowFixed style={{ justifySelf: 'flex-end' }}>
-        {balance ? <Balance balance={balance} /> : account ? <Loader /> : null}
+        {balance ? <Balance balance={balance} /> : address ? <Loader /> : null}
       </RowFixed>
     </MenuItem>
   )

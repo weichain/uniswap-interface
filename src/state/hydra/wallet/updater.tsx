@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { AppDispatch } from '../index'
+import { AppDispatch } from '../../index'
 import { connectWallet } from './actions'
 
 export default function Updater(): null {

@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { CurrencyAmount } from 'hydra/sdk'
-import { useHydraState } from 'state/hydra/hooks'
+import { useHydraState } from 'state/hydra/wallet/hooks'
 
 export function useHydraBalance(): CurrencyAmount | undefined {
   const { balance } = useHydraState()
